@@ -228,6 +228,8 @@ h2 {
     padding-bottom: 8px;
     position: relative;
     transition: color 0.3s var(--transition-grid);
+    /* Protection anti-emoji système */
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .hero-cta-btn:hover {
@@ -337,6 +339,8 @@ h2 {
     z-index: 1;
     overflow: hidden;
     transition: color 0.4s var(--transition-grid), border-color 0.4s var(--transition-grid);
+    /* Protection anti-emoji système */
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .instagram-link::before {
@@ -410,6 +414,12 @@ h2 {
 .skill-item:hover .skill-header,
 .skill-item:hover .skill-description {
     transform: translateX(15px);
+}
+
+header nav a,
+.skill-link-indicator {
+    /* Protection anti-emoji système pour les petites flèches */
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .skill-header {
@@ -504,6 +514,8 @@ h2 {
     margin-bottom: 60px;
     border-bottom: 2px solid var(--accent-color);
     transition: color 0.3s var(--transition-grid), transform 0.3s var(--transition-grid);
+    /* Protection anti-emoji système */
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .close-skill-page:hover {
@@ -768,6 +780,8 @@ footer {
     transition: opacity 0.4s var(--transition-grid), 
                 transform 0.4s var(--transition-grid), 
                 background-color 0.3s var(--transition-grid);
+    /* Protection anti-emoji système */
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .back-to-top.is-visible {
