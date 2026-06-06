@@ -453,7 +453,7 @@ header nav a,
 
 .skill-link-indicator {
     display: block;
-    font-size: 0.8rem;
+    font-size: 1.2rem; /* AUGMENTÉ : Passe de 0.8rem à 1.2rem */
     font-weight: 700;
     color: var(--accent-color);
     padding-left: 48px;
@@ -461,6 +461,7 @@ header nav a,
     transform: translateX(-5px);
     will-change: transform, opacity;
     transition: opacity 0.45s var(--transition-grid), transform 0.45s var(--transition-grid);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .skill-item:hover .skill-link-indicator {
@@ -765,14 +766,15 @@ footer {
     background-color: var(--text-color);
     color: white;
     text-decoration: none;
-    border-radius: 50%; /* Arrondi parfait en cercle */
-    font-size: 1.1rem;
+    border-radius: 50%;
+    font-size: 1.6rem; /* AUGMENTÉ : Passe de 1.1rem à 1.6rem */
     font-weight: 700;
     cursor: pointer;
     z-index: 1500;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 4px; /* AJOUTÉ : Compense la ligne de base pour centrer le glyphe ↑ */
     
     opacity: 0;
     pointer-events: none;
@@ -780,10 +782,8 @@ footer {
     transition: opacity 0.4s var(--transition-grid), 
                 transform 0.4s var(--transition-grid), 
                 background-color 0.3s var(--transition-grid);
-    /* Protection anti-emoji système */
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
 .back-to-top.is-visible {
     opacity: 1;
     pointer-events: auto;
