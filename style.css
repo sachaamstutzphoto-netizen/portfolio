@@ -144,7 +144,7 @@ header nav a:hover span {
     height: 2px;
     background-color: var(--text-color);
     transition: transform 0.4s var(--transition-grid), opacity 0.3s ease;
-    transform-origin: left center;
+    transform-origin: center; /* <--- MODIFIÉ : "center" au lieu de "left center" */
 }
 
 /* ═══════════════════════════════════════════
