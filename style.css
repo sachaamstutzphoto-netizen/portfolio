@@ -862,16 +862,16 @@ footer {
         letter-spacing: 0.05em;
     }
 
-    /* Animation cinétique des barres du bouton burger au clic */
+   /* Animation cinétique des barres du bouton burger au clic */
     header.is-menu-open .burger-bar:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 2px);
+        transform: translateY(8px) rotate(45deg); /* <--- MODIFIÉ */
     }
     header.is-menu-open .burger-bar:nth-child(2) {
         opacity: 0;
         transform: scaleX(0);
     }
     header.is-menu-open .burger-bar:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -2px);
+        transform: translateY(-8px) rotate(-45deg); /* <--- MODIFIÉ */
     }
 
     /* Structure globale adaptative */
