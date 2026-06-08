@@ -18,7 +18,7 @@
     --transition-grid: cubic-bezier(0.16, 1, 0.3, 1); /* Courbe ultra-luxe */
 }
 
-/* Barre de progression haut de page */
+/* Barre de progression haut de page - OPTIMISÉE POUR LE JS */
 .scroll-progress-bar {
     position: fixed;
     top: 0;
@@ -28,13 +28,8 @@
     background-color: var(--accent-color);
     z-index: 2000;
     transform-origin: left;
-    transform: scaleX(0);
-    animation: grow-progress auto linear forwards;
-    animation-timeline: scroll();
-}
-
-@keyframes grow-progress {
-    to { transform: scaleX(1); }
+    transform: scaleX(0); /* Géré par le JS de manière fluide */
+    will-change: transform;
 }
 
 html {
@@ -42,6 +37,8 @@ html {
     color: var(--text-color);
     font-family: 'Plus Jakarta Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
+    /* Nettoyage du smooth natif qui entrait en conflit avec le JS */
+    scroll-padding-top: 90px;
 }
 
 body {
@@ -143,20 +140,13 @@ header nav a:hover span {
     height: 2px;
     background-color: var(--text-color);
     transition: transform 0.4s var(--transition-grid), opacity 0.3s ease;
-    transform-origin: center; /* <--- MODIFIÉ : "center" au lieu de "left center" */
+    transform-origin: center;
 }
 
-/*SCROLLLLLL */
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
-
+/* SCROLL CONFIG */
 section {
     scroll-margin-top: 90px;
 }
-
 
 /* ═══════════════════════════════════════════
    TYPOGRAPHIE & STRATEGIQUE SPACING
@@ -239,7 +229,6 @@ h2 {
     padding-bottom: 8px;
     position: relative;
     transition: color 0.3s var(--transition-grid);
-    /* Protection anti-emoji système */
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -336,7 +325,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Bouton Instagram : effet de remplissage fluide */
 .instagram-link {
     display: inline-block;
     font-size: 0.9rem;
@@ -350,7 +338,6 @@ h2 {
     z-index: 1;
     overflow: hidden;
     transition: color 0.4s var(--transition-grid), border-color 0.4s var(--transition-grid);
-    /* Protection anti-emoji système */
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -414,7 +401,6 @@ h2 {
     background-color: var(--accent-light);
 }
 
-/* Cinétique fluide de glissement des composants internes */
 .skill-item .skill-header,
 .skill-item .skill-description {
     transform: translateX(0);
@@ -429,7 +415,6 @@ h2 {
 
 header nav a,
 .skill-link-indicator {
-    /* Protection anti-emoji système pour les petites flèches */
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -464,7 +449,7 @@ header nav a,
 
 .skill-link-indicator {
     display: block;
-    font-size: 1.2rem; /* AUGMENTÉ : Passe de 0.8rem à 1.2rem */
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--accent-color);
     padding-left: 48px;
@@ -472,7 +457,6 @@ header nav a,
     transform: translateX(-5px);
     will-change: transform, opacity;
     transition: opacity 0.45s var(--transition-grid), transform 0.45s var(--transition-grid);
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .skill-item:hover .skill-link-indicator {
@@ -492,8 +476,6 @@ header nav a,
     background-color: var(--bg-color);
     z-index: 3000; 
     overflow-y: auto;
-    
-    /* Mix de glissement ET d'échelle pour un effet de focus ultra-immersif */
     transform: translateY(60px) scale(0.98);
     opacity: 0;
     visibility: hidden;
@@ -517,7 +499,6 @@ header nav a,
 .close-skill-page {
     background: none;
     border: none;
-    font-family: inherit;
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-color);
@@ -526,7 +507,6 @@ header nav a,
     margin-bottom: 60px;
     border-bottom: 2px solid var(--accent-color);
     transition: color 0.3s var(--transition-grid), transform 0.3s var(--transition-grid);
-    /* Protection anti-emoji système */
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -673,7 +653,6 @@ header nav a,
     color: var(--text-color);
 }
 
-/* Input minimaliste : juste une belle ligne raffinée */
 .structured-form input,
 .structured-form textarea,
 .structured-form select {
@@ -690,7 +669,6 @@ header nav a,
     transition: border-color 0.4s var(--transition-grid);
 }
 
-/* Effet d'illumination de la ligne au focus */
 .structured-form input:focus,
 .structured-form textarea:focus,
 .structured-form select:focus {
@@ -701,7 +679,6 @@ header nav a,
     position: relative;
 }
 
-/* Gros bouton "Envoyer" : Effet Wipe inversé */
 .submit-btn {
     width: 100%;
     padding: 18px;
@@ -778,15 +755,14 @@ footer {
     color: white;
     text-decoration: none;
     border-radius: 50%;
-    font-size: 1.6rem; /* AUGMENTÉ : Passe de 1.1rem à 1.6rem */
+    font-size: 1.6rem;
     font-weight: 700;
     cursor: pointer;
     z-index: 1500;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 4px; /* AJOUTÉ : Compense la ligne de base pour centrer le glyphe ↑ */
-    
+    padding-bottom: 4px;
     opacity: 0;
     pointer-events: none;
     transform: translateY(15px);
@@ -806,7 +782,7 @@ footer {
 }
 
 /* ═══════════════════════════════════════════
-   MÉCANIQUE D'ANIMATION (INTERSECTION OBSERVER)
+   MÉCANIQUE D'ANIMATION
 ═══════════════════════════════════════════ */
 .animate-on-scroll {
     opacity: 0;
@@ -830,19 +806,17 @@ footer {
 }
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE OPTIMIZATION (COMPLET TABLETTE & MOBILE)
+   RESPONSIVE OPTIMIZATION
 ═══════════════════════════════════════════ */
 @media (max-width: 960px) {
     header { 
         padding: 20px 5%; 
     }
 
-    /* Activation visuelle du menu burger */
     .burger-menu {
         display: flex;
     }
 
-    /* Transformation en tiroir de navigation plein écran haut de gamme */
     header nav {
         position: fixed;
         top: 0;
@@ -855,13 +829,10 @@ footer {
         align-items: center;
         gap: 35px;
         z-index: 1000;
-        
-        /* Dissimulation par défaut */
         transform: translateX(100%);
         transition: transform 0.6s var(--transition-grid);
     }
 
-    /* Classe dynamique déclenchée via JavaScript */
     header.is-menu-open nav {
         transform: translateX(0);
     }
@@ -873,19 +844,17 @@ footer {
         letter-spacing: 0.05em;
     }
 
-   /* Animation cinétique des barres du bouton burger au clic */
     header.is-menu-open .burger-bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg); /* <--- MODIFIÉ */
+        transform: translateY(8px) rotate(45deg);
     }
     header.is-menu-open .burger-bar:nth-child(2) {
         opacity: 0;
         transform: scaleX(0);
     }
     header.is-menu-open .burger-bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg); /* <--- MODIFIÉ */
+        transform: translateY(-8px) rotate(-45deg);
     }
 
-    /* Structure globale adaptative */
     .hero-section, .section-galerie, .section-about, .section-skills, .section-contact, footer { 
         padding-left: 6%; 
         padding-right: 6%; 
@@ -911,7 +880,6 @@ footer {
         margin-bottom: 45px;
     }
     
-    /* Nettoyage des effets de survol inadaptés au tactile (Skills) */
     .skills-list {
         gap: 15px;
     }
@@ -949,7 +917,6 @@ footer {
         padding-bottom: 0; 
     }
 
-    /* Adaptation des Overlays / Modales */
     .skill-page-content { 
         padding: 40px 6% 80px 6%; 
     }
@@ -963,7 +930,6 @@ footer {
         padding: 30px 20px;
     }
 
-    /* Bouton retour en haut plus discret sur mobile */
     .back-to-top {
         bottom: 20px;
         right: 20px;
