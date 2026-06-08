@@ -42,7 +42,6 @@ html {
     color: var(--text-color);
     font-family: 'Plus Jakarta Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
 }
 
 body {
