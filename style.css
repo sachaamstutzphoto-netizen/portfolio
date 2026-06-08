@@ -146,6 +146,18 @@ header nav a:hover span {
     transform-origin: center; /* <--- MODIFIÉ : "center" au lieu de "left center" */
 }
 
+/*SCROLLLLLL */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+
 /* ═══════════════════════════════════════════
    TYPOGRAPHIE & STRATEGIQUE SPACING
 ═══════════════════════════════════════════ */
