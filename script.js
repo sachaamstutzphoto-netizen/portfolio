@@ -40,10 +40,24 @@ window.addEventListener('scroll', () => {
 function smoothScrolling(element, event) {
     event.preventDefault();
     let destination = element.getAttribute('href');
-    if (destination && destination !== "#") {
-        const targetSection = document.querySelector(destination);
+    
+    if (destination) {
+        let targetSection;
+        
+        // Gestion spécifique du retour en haut (si l'ancre est # ou #top)
+        if (destination === "#" || destination === "#top") {
+            targetSection = document.body;
+        } else {
+            targetSection = document.querySelector(destination);
+        }
+
         if (targetSection) {
-            targetSection.scrollIntoView({
+            // Calcul précis de la position avec décalage pour le header sticky (85px)
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - 85;
+
+            window.scrollTo({
+                top: offsetPosition,
                 behavior: 'smooth'
             });
 
