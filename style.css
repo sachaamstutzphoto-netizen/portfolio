@@ -33,6 +33,7 @@
 }
 
 html {
+    scroll-behavior: smooth;
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Plus Jakarta Sans', sans-serif;
