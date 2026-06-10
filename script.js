@@ -43,28 +43,24 @@ document.querySelectorAll('.ancre').forEach(link => {
     link.addEventListener('click', (event) => {
         const targetId = link.getAttribute('href');
         
-        // On s'assure que c'est bien une ancre locale
         if (targetId.startsWith('#')) {
             event.preventDefault();
             
-            // Gestion spécifique du cas "#top" ou élément cible
             const targetElement = targetId === '#top' ? document.body : document.querySelector(targetId);
             
             if (targetElement) {
-                // Fermeture propre du menu mobile si ouvert avant de scroller
                 if (header && header.classList.contains('is-menu-open')) {
                     header.classList.remove('is-menu-open');
                     document.body.style.overflow = '';
                 }
 
-                // Calcul précis de l'offset avec la hauteur du header
                 const headerOffset = 90;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-                // Execution du scroll fluide natif maîtrisé
                 window.scrollTo({
-                    top: targetId === '#top' ? 0 : offsetPosition
+                    top: targetId === '#top' ? 0 : offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         }
@@ -96,8 +92,8 @@ if (boutonRetourHaut) {
     boutonRetourHaut.addEventListener('click', (event) => {
         event.preventDefault();
         window.scrollTo({
-            top: 0
-            
+            top: 0,
+            behavior: 'smooth'
         });
     });
 }
