@@ -64,8 +64,7 @@ document.querySelectorAll('.ancre').forEach(link => {
 
                 // Execution du scroll fluide natif maîtrisé
                 window.scrollTo({
-                    top: targetId === '#top' ? 0 : offsetPosition,
-                    behavior: 'smooth'
+                    top: targetId === '#top' ? 0 : offsetPosition
                 });
             }
         }
@@ -97,8 +96,8 @@ if (boutonRetourHaut) {
     boutonRetourHaut.addEventListener('click', (event) => {
         event.preventDefault();
         window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+            top: 0
+            
         });
     });
 }
